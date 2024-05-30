@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Adjust the branch name if necessary
+      - main 
 
 jobs:
   deploy:
@@ -19,9 +19,12 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Start development server
+        run: npm start
+
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
-          branch: gh-pages  
-          folder: myapp     
+          branch: gh-pages  # Specify the branch where GitHub Pages will be deployed
+          folder: myapp     # Specify the folder containing your built React.js project
           token: ${{ secrets.GITHUB_TOKEN }}
